@@ -1,23 +1,18 @@
-// Priority constants
 const PRIORITY = { "LOW": 1, "MEDIUM": 3, "HIGH": 5, "URGENT": 7 };
 
 function validInteger(value) {
-  // Check if the value is a number and not NaN
   const number = Number(value);
   
-  // Check if it's a non-negative integer
+  // Checks if it's a non-negative integer
   return Number.isInteger(number) && number >= 0 && String(number) === String(value);
 }
 
-// Helper function to validate priority
 function validatePriority(priority) {
     const validPriorities = [1, 3, 5, 7];
 
-    // Check if the priority is a number and is in the valid priorities array
     if (typeof priority === 'number' && validPriorities.includes(priority)) {
         return priority;
     }
-    // Check if the priority is a string that can be converted to a number
     if (typeof priority === 'string') {
         const numericPriority = parseInt(priority, 10);
         if (validPriorities.includes(numericPriority)) {
@@ -27,7 +22,6 @@ function validatePriority(priority) {
     return PRIORITY.LOW; // Default to LOW priority
 }
 
-// Helper function to get the current date and time in the specified format
 function todaysDate() {
     const now = new Date();
     return [
@@ -43,66 +37,58 @@ function todaysDate() {
 }
 
 class Task {
-  #title; // Private field for title
-  #priority; // Private field for priority
-  #added; // Private field for the date added
+  #title;
+  #priority;
+  #added;
 
   constructor(title, priority) {
       this.#title = title;
-      this.#priority = validatePriority(priority); // Validate priority
-      this.#added = todaysDate(); // Set added date
+      this.#priority = validatePriority(priority);
+      this.#added = todaysDate();
   }
 
   get title() {
-      return this.#title; // Getter for title
+      return this.#title;
   }
-
   get priority() {
-      return this.#priority; // Getter for priority
+      return this.#priority;
   }
-
   get added() {
-      return this.#added; // Getter for added date
+      return this.#added;
   }
-
-  // Public accessors to match the test expectations
   get _title() {
       return this.#title;
   }
-
   get _priority() {
       return this.#priority;
   }
-
   get _added() {
       return this.#added;
   }
-
   set priority(newPriority) {
-      this.#priority = validatePriority(newPriority); // Validate priority on set
+      this.#priority = validatePriority(newPriority);
   }
 }
 
-// ToDo class definition
 class ToDo {
-    #tasks; // Private field for tasks
+    #tasks;
 
     constructor() {
-        this.#tasks = []; // Initialize an empty list of tasks
+        this.#tasks = [];
     }
 
     add(task) {
-        this.#tasks.push(task); // Add the Task instance to the tasks array
-        return this.#tasks.length; // Return the total number of tasks
+        this.#tasks.push(task);
+        return this.#tasks.length;
     }
 
     remove(title) {
         const index = this.#tasks.findIndex(task => task.title === title);
         if (index !== -1) {
-            this.#tasks.splice(index, 1); // Remove the task from the array
-            return true; // Return true if a task was removed
+            this.#tasks.splice(index, 1);
+            return true;
         }
-        return false; // Return false if no task was found
+        return false;
     }
 
     list(priority = 0) {
@@ -115,9 +101,9 @@ class ToDo {
     task(title) {
         const foundTask = this.#tasks.find(task => task.title === title);
         if (foundTask) {
-            return foundTask; // Return the found task
+            return foundTask;
         }
-        throw new Error(`Task '${title}' Not Found`); // Throw an error if not found
+        throw new Error(`Task '${title}' Not Found`);
     }
 }
 /*
