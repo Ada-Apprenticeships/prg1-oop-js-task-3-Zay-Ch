@@ -15,12 +15,22 @@ function validInteger(value) {
   return false;
 }
 
-
-
-function validatePriority(priority) { // value can be a string or a number (integer)
-  
+function validatePriority(priority) {
+    const validPriorities = [1, 3, 5, 7];
+    
+    // Check if the priority is a number and is in the valid priorities array
+    if (typeof priority === 'number' && validPriorities.includes(priority)) {
+        return priority;
+    }
+    // Check if the priority is a string that can be converted to a number
+    if (typeof priority === 'string') {
+        const numericPriority = parseInt(priority, 10);
+        if (validPriorities.includes(numericPriority)) {
+            return numericPriority;
+        }
+    }
+    return 1; // LOW priority
 }
-
 
 function todaysDate () {
   
