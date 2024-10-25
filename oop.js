@@ -32,10 +32,20 @@ function validatePriority(priority) {
     return 1; // LOW priority
 }
 
-function todaysDate () {
+function todaysDate() {
+  const now = new Date();
   
+  return [
+      String(now.getDate()).padStart(2, '0'),
+      String(now.getMonth() + 1).padStart(2, '0'),
+      now.getFullYear()
+  ].join('/') + ' ' + 
+  [
+      String(now.getHours()).padStart(2, '0'),
+      String(now.getMinutes()).padStart(2, '0'),
+      String(now.getSeconds()).padStart(2, '0')
+  ].join(':');
 }
-
 
 class Task  {
 
