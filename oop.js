@@ -47,11 +47,33 @@ function todaysDate() {
   ].join(':');
 }
 
-class Task  {
+class Task {
+  #title; // Private field for title
+  #priority; // Private field for priority
+  #added; // Private field for the date added
 
-  // (title, priority)
+  constructor(title, priority) {
+      this.#title = title;
+      this.#priority = priority;
+      this.#added = new Date().toLocaleString(); // Store the current date and time as a string
+  }
+
+  get title() {
+      return this.#title; // Getter for title
+  }
+
+  get priority() {
+      return this.#priority; // Getter for priority
+  }
+
+  get added() {
+      return this.#added; // Getter for added date
+  }
+
+  set priority(newPriority) {
+      this.#priority = newPriority; // Setter for priority
+  }
 }
-
 
 class ToDo {
     
