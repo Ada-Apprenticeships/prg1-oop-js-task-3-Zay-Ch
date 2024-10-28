@@ -106,34 +106,6 @@ class ToDo {
         throw new Error(`Task '${title}' Not Found`);
     }
 }
-/*
-// Testing validInteger function
-console.log(validInteger(5)); // true
-console.log(validInteger(-1)); // false
-console.log(validInteger('10')); // true
-console.log(validInteger('abc')); // false
-
-// Testing validatePriority function
-console.log(validatePriority(3)); // 3
-console.log(validatePriority('5')); // 5
-console.log(validatePriority(10)); // 1 (default LOW)
-console.log(validatePriority('invalid')); // 1 (default LOW)
-
-// Testing todaysDate function
-console.log(todaysDate()); // Current date in 'dd/mm/yyyy hh:mm:ss' format
-
-// Testing Task and ToDo classes
-const task1 = new Task('Get Cappuccino', PRIORITY.MEDIUM);
-console.log(task1.added); // Should show current date and time
-console.log(task1.title); // 'Get Cappuccino'
-console.log(task1.priority); // 3 (MEDIUM)
-
-const taskList = new ToDo();
-console.log(taskList.add(task1)); // 1
-console.log(taskList.list()); // List all tasks
-console.log(taskList.remove('Get Cappuccino')); // true
-console.log(taskList.list()); // Should be empty
-*/
 
 // Leave this code here for the automated tests
 module.exports = {
