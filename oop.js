@@ -53,15 +53,6 @@ class Task {
   get added() {
       return this.#added;
   }
-  get _title() {
-      return this.#title;
-  }
-  get _priority() {
-      return this.#priority;
-  }
-  get _added() {
-      return this.#added;
-  }
     // Setter for task priority with validation
   set priority(newPriority) {
       this.#priority = validatePriority(newPriority);
