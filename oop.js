@@ -48,15 +48,12 @@ class Task {
   get title() {
     return this._title;
   }
-
   get priority() {
     return this._priority;
   }
-
   get added() {
     return this._added;
   }
-
   // Setter for task priority with validation
   set priority(newPriority) {
     this._priority = validatePriority(newPriority);
@@ -75,7 +72,6 @@ class ToDo {
     this._tasks.push(task);
     return this._tasks.length;
   }
-
   remove(title) {
     const index = this._tasks.findIndex(task => task.title === title); // Find task index by title
     if (index !== -1) {
@@ -84,14 +80,12 @@ class ToDo {
     }
     return false; // Return false if task not found
   }
-
   list(priority = 0) {
     // Return all tasks or tasks with the specified priority
     return this._tasks
       .filter(task => priority === 0 || task.priority === priority)  // Include tasks with the specified priority or all if priority is 0
       .map(task => [task.added, task.title, task.priority]);  // Map to an array of task details
   }
-
   task(title) {
     const foundTask = this._tasks.find(task => task.title === title); // Find the task in the tasks array by title
     if (foundTask) {
